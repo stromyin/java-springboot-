@@ -6,16 +6,18 @@ package com.example.springbootbigfile;
  */
 public class JsonResult<T> {
   
-    private String code;
+    private int code;
     private String msg;
     private T data;
 
-    public String getCode() {
+    public int getCode() {
         return code;
     }
-    public void setCode(String code) {
+
+    public void setCode(int code) {
         this.code = code;
     }
+
     public String getMsg() {
         return msg;
     }
@@ -36,7 +38,7 @@ public class JsonResult<T> {
 
     public static <T> JsonResult<T> fail() {
     	JsonResult<T> ret = new JsonResult<T>();
-    	ret.setCode("201");
+    	ret.setCode(-1);
     	ret.setMsg("失败");
         return ret;
     }
@@ -60,8 +62,8 @@ public class JsonResult<T> {
 
     public static <T> JsonResult<T> success() {
     	JsonResult<T> ret = new JsonResult<T>();
-    	ret.setCode("200");
-    	ret.setMsg("");
+    	ret.setCode(1);
+    	ret.setMsg("成功");
         return ret;
     }
 
@@ -73,15 +75,15 @@ public class JsonResult<T> {
     
     public static <T> JsonResult<T>  http404(T data) {
 	    	JsonResult<T> ret = new JsonResult<T>();
-	    	ret.setCode("404");
-	    	ret.setMsg("");
+	    	ret.setCode(404);
+	    	ret.setMsg("服务异常");
 	    	ret.setData(data);
         return ret;
     }
     
     public static <T> JsonResult<T> http403(T data) {
 	    	JsonResult<T> ret = new JsonResult<T>();
-	    	ret.setCode("403");
+	    	ret.setCode(403);
 	    	ret.setMsg("");
 	    	ret.setData(data);
         return ret;
